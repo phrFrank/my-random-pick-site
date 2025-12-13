@@ -86,7 +86,7 @@
   <div class="bar-container">
     <div id="poultryBar" class="bar poultry" style="width:0%">0</div>
   </div>
-  <div class="score" id="poultryScore">Poultry feet: 0</div>
+  <div class="score" id="poultryScore">Trotters: 0</div>
 
   <button onclick="startSimulation()">Start Simulation</button>
 
@@ -125,7 +125,7 @@
       poultryBar.textContent = poultryCount;
 
       document.getElementById("wontonScore").textContent = "Wonton: " + wontonCount;
-      document.getElementById("poultryScore").textContent = "Poultry feet: " + poultryCount;
+      document.getElementById("poultryScore").textContent = "Trotter: " + poultryCount;
     }
 
     function updateEmoji(pick) {
@@ -134,7 +134,7 @@
         emojiDiv.textContent = "🥟";
         emojiDiv.style.color = "#e74c3c"; // red theme
       } else {
-        emojiDiv.textContent = "🐓";
+        emojiDiv.textContent = "🐖";
         emojiDiv.style.color = "#3498db"; // blue theme
       }
     }
