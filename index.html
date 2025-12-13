@@ -15,9 +15,14 @@
       margin: 0;
     }
     h1 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       font-size: 24px;
       color: #333;
+    }
+    #emoji {
+      font-size: 60px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
     }
     .bar-container {
       width: 80%;
@@ -71,6 +76,7 @@
 <body>
 
   <h1 id="title">Pick #0</h1>
+  <div id="emoji">❓</div> <!-- Emoji placeholder -->
 
   <div class="bar-container">
     <div id="wontonBar" class="bar wonton" style="width:0%">0</div>
@@ -122,11 +128,23 @@
       document.getElementById("poultryScore").textContent = "Poultry feet: " + poultryCount;
     }
 
+    function updateEmoji(pick) {
+      const emojiDiv = document.getElementById("emoji");
+      if (pick === "wonton") {
+        emojiDiv.textContent = "🥟";
+        emojiDiv.style.color = "#e74c3c"; // red theme
+      } else {
+        emojiDiv.textContent = "🐓";
+        emojiDiv.style.color = "#3498db"; // blue theme
+      }
+    }
+
     function startSimulation() {
       wontonCount = 0;
       poultryCount = 0;
       currentPick = 0;
       updateBars();
+      document.getElementById("emoji").textContent = "❓";
 
       clearInterval(interval);
       interval = setInterval(() => {
@@ -140,8 +158,10 @@
         // Random pick: 0 = wonton, 1 = poultry feet
         if (Math.random() < 0.5) {
           wontonCount++;
+          updateEmoji("wonton");
         } else {
           poultryCount++;
+          updateEmoji("poultry");
         }
         updateBars();
       }, pause);
